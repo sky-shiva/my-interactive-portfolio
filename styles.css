@@ -1,0 +1,6 @@
+/* Custom CSS */
+
+/* Ensures smooth scrolling when navigating to section IDs */
+html {
+    scroll-behavior: smooth;
+}
