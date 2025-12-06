@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiva Kumar Yadav | Data Science Enthusiast</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Dark mode colors matching the template
+                        'primary-dark': '#111827', 
+                        'secondary-dark': '#1f2937', 
+                        // Your chosen accent color: Deep Violet (#9333ea)
+                        'accent-color': '#9333ea', 
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-primary-dark text-white font-sans">
+
+    <header class="bg-secondary-dark sticky top-0 z-50 shadow-xl border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-accent-color">
+                Shiva Kumar Yadav
+            </div>
+            <nav class="space-x-6 hidden md:flex">
+                <a href="#about" class="text-gray-300 hover:text-accent-color transition duration-300">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-accent-color transition duration-300">Skills</a>
+                <a href="#certificates" class="text-gray-300 hover:text-accent-color transition duration-300">Certificates</a>
+                <a href="#portfolio" class="text-gray-300 hover:text-accent-color transition duration-300">Portfolio</a>
+                <a href="#contact" class="text-gray-300 hover:text-accent-color transition duration-300">Contact Me</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="min-h-screen flex items-center p-4 pt-20">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12">
+                
+                <div class="space-y-6">
+                    <h2 class="text-6xl sm:text-7xl font-extrabold mb-2 leading-tight">
+                        Hi, I am <br><span class="text-accent-color">Shiva Kumar Yadav</span>
+                    </h2>
+                    <h3 class="text-3xl text-gray-400 font-semibold">
+                        Data Science Enthusiast
+                    </h3>
+                    <p class="text-xl text-gray-300 max-w-lg mb-8">
+                        An enthusiastic and passionate coder with an eye for detail and a focus on leveraging data to produce quality insights and solutions.
+                    </p>
+                    
+                    <a href="#contact" class="inline-block px-8 py-4 text-xl font-semibold bg-accent-color text-white rounded-lg hover:bg-violet-600 transition duration-300 shadow-2xl shadow-accent-color/50">
+                        Contact Me &nbsp; &gt;
+                    </a>
+                    
+                    <div class="pt-8">
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="text-gray-400 hover:text-accent-color mr-4 text-3xl transition duration-300" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/yourprofile" target="_blank" class="text-gray-400 hover:text-accent-color mr-4 text-3xl transition duration-300" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:youremail@example.com" class="text-gray-400 hover:text-accent-color text-3xl transition duration-300" title="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="relative flex justify-center md:justify-end">
+                    <div class="absolute inset-0 bg-accent-color opacity-30 rounded-full w-96 h-96 mx-auto md:mx-0 blur-3xl"></div>
+                    <div class="relative w-80 h-80 bg-gray-600 rounded-full overflow-hidden border-4 border-accent-color shadow-2xl">
+                         <img src="your-photo-link.jpg" alt="Shiva Kumar Yadav" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="bg-secondary-dark py-24 px-4">
+            <div class="max-w-7xl mx-auto">
+                <h3 class="text-5xl font-bold text-center mb-16 text-accent-color">
+                    About Me
+                </h3>
+                <div class="max-w-4xl mx-auto text-xl leading-relaxed space-y-8 text-gray-300">
+                    <p>
+                        I am Shiva Kumar Yadav, driven by a fascination with data and its power to uncover insights and drive decisions. My journey is focused on mastering **Python**, **statistical analysis**, and core **Machine Learning** concepts.
+                    </p>
+                    <p>
+                        I believe the combination of strong coding fundamentals (HTML, CSS, JS) and analytical rigor is essential for building robust, data-driven applications. I am actively seeking opportunities to apply my skills in real-world projects.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills" class="bg-primary-dark py-24 px-4">
+            <div class="max-w-7xl mx-auto">
+                <h3 class="text-5xl font-bold text-center mb-16 text-accent-color">
+                    Skills & Expertise
+                </h3>
+                <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="text-center p-6 bg-secondary-dark rounded-xl shadow-lg border border-gray-700 hover:border-accent-color transition duration-300">
+                        <i class="fab fa-python text-4xl text-yellow-500 mb-3"></i>
+                        <h4 class="text-xl font-semibold">Python</h4>
+                        <p class="text-gray-400 text-sm">Pandas, NumPy, Scikit-learn</p>
+                    </div>
+                    <div class="text-center p-6 bg-secondary-dark rounded-xl shadow-lg border border-gray-700 hover:border-accent-color transition duration-300">
+                        <i class="fas fa-database text-4xl text-blue-400 mb-3"></i>
+                        <h4 class="text-xl font-semibold">SQL</h4>
+                        <p class="text-gray-400 text-sm">Data Extraction, Query Optimization</p>
+                    </div>
+                     <div class="text-center p-6 bg-secondary-dark rounded-xl shadow-lg border border-gray-700 hover:border-accent-color transition duration-300">
+                        <i class="fas fa-chart-bar text-4xl text-red-400 mb-3"></i>
+                        <h4 class="text-xl font-semibold">Data Visualization</h4>
+                        <p class="text-gray-400 text-sm">Matplotlib, Seaborn, Tableau</p>
+                    </div>
+                    <div class="text-center p-6 bg-secondary-dark rounded-xl shadow-lg border border-gray-700 hover:border-accent-color transition duration-300">
+                        <i class="fas fa-brain text-4xl text-accent-color mb-3"></i>
+                        <h4 class="text-xl font-semibold">Machine Learning</h4>
+                        <p class="text-gray-400 text-sm">Regression, Classification, Clustering</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificates" class="bg-secondary-dark py-24 px-4">
+            <div class="max-w-7xl mx-auto">
+                <h3 class="text-5xl font-bold text-center mb-16 text-accent-color">
+                    Certificates & Courses
+                </h3>
+                <div class="max-w-4xl mx-auto text-center space-y-6">
+                    <p class="text-xl text-gray-300">This section is for showcasing your hard-earned certificates from platforms like Coursera, Kaggle, and Udemy.</p>
+                    
+                    <ul class="list-disc list-inside space-y-2 text-left max-w-md mx-auto">
+                        <li class="text-gray-200">Google Data Analytics Professional Certificate <span class="text-sm text-accent-color ml-2">(Credential Link)</span></li>
+                        <li class="text-gray-200">IBM Data Science Professional Certificate <span class="text-sm text-accent-color ml-2">(Credential Link)</span></li>
+                        <li class="text-gray-200">Machine Learning Specialization - Andrew Ng <span class="text-sm text-accent-color ml-2">(Credential Link)</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="bg-primary-dark py-24 px-4">
+            <div class="max-w-7xl mx-auto">
+                <h3 class="text-5xl font-bold text-center mb-16 text-accent-color">
+                    Data Science Projects
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-secondary-dark p-6 rounded-xl shadow-lg border border-gray-700 hover:shadow-accent-color/30 transition duration-300">
+                        <h4 class="text-2xl font-bold text-gray-100 mb-2">House Price Prediction Model</h4>
+                        <p class="text-gray-400 mb-4">Developed a linear regression model to predict housing prices using California census data. Achieved an R-squared score of 0.85.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-semibold text-accent-color border border-accent-color rounded-full px-3 py-1">Python</span>
+                            <span class="text-xs font-semibold text-accent-color border border-accent-color rounded-full px-3 py-1">Scikit-learn</span>
+                            <span class="text-xs font-semibold text-accent-color border border-accent-color rounded-full px-3 py-1">EDA</span>
+                        </div>
+                        <a href="your-github-repo-link" target="_blank" class="text-accent-color hover:text-violet-400 font-semibold transition duration-300">View on GitHub &rarr;</a>
+                    </div>
+                    </div>
+            </div>
+        </section>
+
+        <section id="contact" class="bg-gray-800 text-white py-24 px-4">
+            <div class="max-w-xl mx-auto">
+                <h3 class="text-5xl font-bold text-center mb-12 text-accent-color">
+                    Contact Me
+                </h3>
+                <p class="text-center text-gray-400 mb-8">Ready to collaborate on a data project? Let's connect.</p>
+                
+                <form action="mailto:YOUR_EMAIL_ADDRESS_HERE" method="GET" class="space-y-6" enctype="text/plain">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
+                        <input type="text" name="subject" id="name" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-accent-color focus:border-accent-color text-white placeholder-gray-500" placeholder="Shiva Kumar Yadav">
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
+                        <textarea name="body" id="message" rows="5" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-accent-color focus:border-accent-color text-white placeholder-gray-500" placeholder="I am contacting you about..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full px-4 py-4 text-xl font-semibold bg-accent-color text-white rounded-lg hover:bg-violet-600 transition duration-300 shadow-xl">
+                        Send Email
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-secondary-dark text-center py-8 text-gray-500 text-sm border-t border-gray-700">
+        &copy; 2024 Shiva Kumar Yadav. All rights reserved. | Built with HTML, Tailwind CSS, & JS.
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <script src="https://kit.fontawesome.com/97828c467e.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
