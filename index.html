@@ -1,659 +1,144 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shiva Kumar Yadav | Data Science Portfolio</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Animation Library (AOS) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/97828c467e.js" crossorigin="anonymous"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary-dark': '#0f172a', 
-                        'secondary-dark': '#1e293b', 
-                        'accent-color': '#9333ea', 
-                        'accent-hover': '#7e22ce',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
+    <title>System Maintenance</title>
     <style>
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 1px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #0512ce;
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #111111;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Courier New", monospace;
         }
 
-        /* Typewriter Effect Cursor */
-        .typing-cursor::after {
-            content: '|';
-            animation: blink s infinite;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        body {
+            background: black;
+            color: #04954d;
+            overflow: hidden;
         }
 
-        /* Skill Bar Animation */
-        .skill-fill {
-            width: 1%; 
-            transition: width 1.5s ease-in-out;
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px #07a152;
+            animation: glitch 1.5s infinite;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #2ce108;
+            max-width: 600px;
+        }
+
+        .terminal {
+            margin-top: 30px;
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid #00ff88;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+            text-align: left;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .terminal span {
+            display: block;
+            animation: typing 0.8s steps(40) infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-1px, 1px); }
+            80% { transform: translate(1px, -1px); }
+            100% { transform: translate(0); }
+        }
+
+        @keyframes typing {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
         }
     </style>
 </head>
-<body class="bg-primary-dark text-white font-sans overflow-x-hidden">
+<body>
 
-    <!-- Navbar -->
-    <header class="bg-secondary-dark/90 backdrop-blur-md sticky top-0 z-50 shadow-lg border-b border-gray-700">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <div class="text-2xl font-extrabold text-accent-color tracking-wider cursor-pointer" onclick="window.scrollTo(0,0)">
-                &lt;Shiva/&gt;
-            </div>
-            <nav class="space-x-8 hidden md:flex font-semibold">
-                <a href="#about" class="text-gray-300 hover:text-accent-color transition duration-300">About</a>
-                <a href="#skills" class="text-gray-300 hover:text-accent-color transition duration-300">Skills</a>
-                <a href="#portfolio" class="text-gray-300 hover:text-accent-color transition duration-300">Projects</a>
-                <a href="#certificates" class="text-gray-300 hover:text-accent-color transition duration-300">Certificates</a>
-                <a href="#contact" class="px-4 py-2 border-2 border-accent-color rounded-lg text-accent-color hover:bg-accent-color hover:text-white transition duration-300">Contact</a>
-            </nav>
-        </div>
-    </header>
+<canvas id="matrix"></canvas>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="hero" class="min-h-screen flex items-center p-4 pt-20 relative overflow-hidden">
-            <!-- Background Decoration -->
-            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-accent-color rounded-full opacity-10 blur-3xl"></div>
-            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-blue-600 rounded-full opacity-10 blur-3xl"></div>
+<div class="container">
+    <h1>⚠ Hacked By Shiva ⚠</h1>
+    <p>
+        Our servers are undergoing upgrades.<br>
+        Engineers are inside the system.<br>
+        Do not attempt access.
+    </p>
 
-            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-16 relative z-10">
-                
-                <div class="space-y-6" data-aos="fade-right" data-aos-duration="1000">
-                    <p class="text-xl text-gray-400">Hello, I am</p>
-                    <h1 class="text-6xl sm:text-8xl font-extrabold mb-2 leading-tight text-white">
-                        <span class="text-accent-color">Shiva</span> Kumar Yadav
-                    </h1>
-                    <h2 class="text-3xl text-gray-300 font-semibold border-l-4 border-accent-color pl-4 typing-cursor">
-                        Data Science Enthusiast
-                    </h2>
-                  
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#portfolio" class="px-8 py-3 text-lg font-semibold bg-accent-color text-white rounded-full hover:bg-accent-hover transition duration-300 shadow-lg shadow-accent-color/30 transform hover:scale-105">
-                            View Work
-                        </a>
-                        <a href="#contact" class="px-8 py-3 text-lg font-semibold border border-gray-500 text-gray-300 rounded-full hover:border-white hover:text-white transition duration-300">
-                            Contact Me
-                        </a>
-                    </div>
-                    
-                    <div class="pt-8 space-x-6">
-                        <a href="https://www.linkedin.com/in/shiva-kumar-yadav-201661337" target="_blank" class="text-gray-400 hover:text-accent-color text-3xl transition duration-300"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/sky-shiva" target="_blank" class="text-gray-400 hover:text-accent-color text-3xl transition duration-300"><i class="fab fa-github"></i></a>
-                        <a href="mailto:shiva220620@gmail.com" class="text-gray-400 hover:text-accent-color text-3xl transition duration-300"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
+    <div class="terminal">
+        <span>> Initializing secure modules...</span>
+        <span>> Patching vulnerabilities...</span>
+        <span>> Encrypting endpoints...</span>
+        <span>> System will be back online soon.</span>
+    </div>
+</div>
 
-                <div class="relative flex justify-center md:justify-end" data-aos="fade-left" data-aos-duration="2000">
-                    <div class="relative w-72 h-72 sm:w-96 sm:h-96">
-                        <div class="absolute inset-0 bg-accent-color rounded-full blur-[500px] opacity-40 animate-pulse"></div>
-                        <img src="images/shivaiith.jpg" alt="Shiva Kumar Yadav" class="relative w-full h-full object-cover rounded-full border-4 border-secondary-dark ring-4 ring-accent-color shadow-2xl transform hover:scale-105 transition duration-500">
-                    </div>
-                </div>
-            </div>
-        </section>
+<script>
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
 
-        <!-- About Section -->
-        <section id="about" class="bg-secondary-dark py-24 px-4 relative">
-            <div class="max-w-5xl mx-auto" data-aos="fade-up">
-                <h3 class="text-4xl sm:text-5xl font-bold text-center mb-12 text-white">
-                    About <span class="text-accent-color">Me</span>
-                </h3>
-                
-                <div class="bg-primary-dark p-8 md:p-12 rounded-2xl shadow-xl border border-gray-700 leading-relaxed text-lg text-gray-300 space-y-6 relative overflow-hidden">
-                    <i class="fas fa-quote-left absolute top-4 left-4 text-6xl text-gray-800 -z-0"></i>
-                    
-                    <div class="relative z-10 space-y-6">
-                        <p class="font-medium text-white text-xl">
-                            Hey, I’m Shiva — a data science enthusiast who loves building things that actually solve problems.
-                        </p>
-                        
-                        <p>
-                            I’m in my B.Tech journey, constantly tinkering with <span class="text-accent-color font-bold">AI, analytics, and full-stack development</span> like they’re puzzle pieces waiting to click. I’m the kind of person who asks “why?” a little too often, breaks things just to understand them, and then builds them back cleaner. 
-                        </p>
-                        
-                        <div class="pl-4 border-l-4 border-accent-color italic text-gray-400 my-6">
-                            "Data, to me, is a story. Code is the pen. And I’m just trying to write something worth reading."
-                        </div>
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-                        <p>
-                            When I’m not debugging or wrestling with Git, I’m probably learning something new, planning my next project, or imagining tools that make people’s lives 1% easier.
-                        </p>
+    const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*";
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
 
-                        <p class="font-semibold text-white">
-                            This is me — curious, hands-on, slightly stubborn, and always building.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    const drops = Array(Math.floor(columns)).fill(1);
 
-        <!-- Skills Section (Animated Bars) -->
-        <section id="skills" class="bg-primary-dark py-24 px-4">
-            <div class="max-w-6xl mx-auto">
-                <h3 class="text-4xl sm:text-5xl font-bold text-center mb-16 text-white">
-                    Skills & <span class="text-accent-color">Experience</span>
-                </h3>
+    function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    
-                    <!-- Technical Skills -->
-                    <div class="space-y-8" data-aos="fade-right">
-                        <h4 class="text-2xl font-bold text-gray-200 mb-6 flex items-center gap-2">
-                            <i class="fas fa-code text-accent-color"></i> Technical ProficiencyA
-                        </h4>
+        ctx.fillStyle = "#00ff88";
+        ctx.font = fontSize + "px monospace";
 
-                        <!-- Skill 1 -->
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="font-medium text-gray-300">Python (Data Science & OOPs)</span>
-                                <span class="text-sm text-gray-400">90%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2.5">
-                                <div class="skill-fill bg-gradient-to-r from-blue-500 to-accent-color h-2.5 rounded-full" style="width: 90%"></div>
-                            </div>
-                        </div>
+        for (let i = 0; i < drops.length; i++) {
+            const text = letters[Math.floor(Math.random() * letters.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-                        <!-- Skill 2 -->
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="font-medium text-gray-300">SQL & MySQL(Database Management)</span>
-                                <span class="text-sm text-gray-400">95%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2.5">
-                                <div class="skill-fill bg-gradient-to-r from-blue-500 to-accent-color h-2.5 rounded-full" style="width: 95%"></div>
-                            </div>
-                        </div>
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
 
-                        <!-- Skill 3 -->
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="font-medium text-gray-300">Data Analysis(Pandas/NumPy)</span>
-                                <span class="text-sm text-gray-400">95%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2.5">
-                                <div class="skill-fill bg-gradient-to-r from-blue-500 to-accent-color h-2.5 rounded-full" style="width: 80%"></div>
-                            </div>
-                        </div>
+            drops[i]++;
+        }
+    }
 
-                         <!-- Skill 4 -->
-                         <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="font-medium text-gray-300">Basic Frontend Development</span>
-                                <span class="text-sm text-gray-400">75%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2.5">
-                                <div class="skill-fill bg-gradient-to-r from-blue-500 to-accent-color h-2.5 rounded-full" style="width: 75%"></div>
-                            </div>
-                        </div>
-                    </div>
+    setInterval(drawMatrix, 35);
 
-                    <!-- Soft Skills & Tools -->
-                    <div class="space-y-8" data-aos="fade-left">
-                        <h4 class="text-2xl font-bold text-gray-200 mb-6 flex items-center gap-2">
-                            <i class="fas fa-tools text-accent-color"></i> Tools & Soft Skills
-                        </h4>
+    window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+</script>
 
-                        <!-- Skill 5 -->
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="font-medium text-gray-300">Git & GitHub</span>
-                                <span class="text-sm text-gray-400">85%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2.5">
-                                <div class="skill-fill bg-gradient-to-r from-purple-500 to-pink-500 h-2.5 rounded-full" style="width: 85%"></div>
-                            </div>
-                        </div>
-
-                        <!-- Skill 6 -->
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="font-medium text-gray-300">Problem Solving & Logic</span>
-                                <span class="text-sm text-gray-400">95%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2.5">
-                                <div class="skill-fill bg-gradient-to-r from-purple-500 to-pink-500 h-2.5 rounded-full" style="width: 95%"></div>
-                            </div>
-                        </div>
-
-                        <!-- Skill 7 -->
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="font-medium text-gray-300">Data Storytelling</span>
-                                <span class="text-sm text-gray-400">80%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2.5">
-                                <div class="skill-fill bg-gradient-to-r from-purple-500 to-pink-500 h-2.5 rounded-full" style="width: 80%"></div>
-                            </div>
-                        </div>
-
-                        <!-- Skill 8 -->
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="font-medium text-gray-300">Microsoft Excel</span>
-                                <span class="text-sm text-gray-400">90%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2.5">
-                                <div class="skill-fill bg-gradient-to-r from-purple-500 to-pink-500 h-2.5 rounded-full" style="width: 90%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="portfolio" class="bg-secondary-dark py-24 px-4">
-            <div class="max-w-7xl mx-auto">
-                <h3 class="text-4xl sm:text-5xl font-bold text-center mb-16 text-white" data-aos="fade-down">
-                    Featured <span class="text-accent-color">Projects</span>
-                </h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <!-- Project 1 -->
-                    <div class="bg-primary-dark rounded-xl overflow-hidden shadow-lg border border-gray-700 group hover:-translate-y-2 transition-all duration-300" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="p-6">
-                            <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-accent-color transition">TGSRTC Ticketing System</h4>
-                            <p class="text-gray-400 text-sm mb-4">Python OOPs, Flask, Socket, Threading, QR Code integration. Includes payment simulation.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-blue-400 border border-blue-400">Python</span>
-                                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-blue-400 border border-blue-400">Flask</span>
-                            </div>
-                            <a href="https://github.com/sky-shiva/Tgsrtc-Ticketing-system" target="_blank" class="inline-flex items-center text-accent-color hover:text-white font-semibold transition">
-                                View Code <i class="fab fa-github ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project 2 -->
-                    <div class="bg-primary-dark rounded-xl overflow-hidden shadow-lg border border-gray-700 group hover:-translate-y-2 transition-all duration-300" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="p-6">
-                            <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-accent-color transition">Smart AI Waste Segregation</h4>
-                            <p class="text-gray-400 text-sm mb-4">AI-powered concept to automate waste management processes. Built with fundamental HTML structure.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-green-400 border border-green-400">AI Concept</span>
-                                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-green-400 border border-green-400">HTML</span>
-                            </div>
-                            <a href="https://github.com/sky-shiva/smart-ai-waste-segregation" target="_blank" class="inline-flex items-center text-accent-color hover:text-white font-semibold transition">
-                                View Code <i class="fab fa-github ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 -->
-                    <div class="bg-primary-dark rounded-xl overflow-hidden shadow-lg border border-gray-700 group hover:-translate-y-2 transition-all duration-300" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="p-6">
-                            <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-accent-color transition">Superstore Mgmt (SQL)</h4>
-                            <p class="text-gray-400 text-sm mb-4">Management system focusing on PDBC (Python Database Connectivity) for efficient data handling.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-yellow-400 border border-yellow-400">SQL</span>
-                                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-yellow-400 border border-yellow-400">Python</span>
-                            </div>
-                            <a href="https://github.com/sky-shiva/Superstore-Management-system" target="_blank" class="inline-flex items-center text-accent-color hover:text-white font-semibold transition">
-                                View Code <i class="fab fa-github ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project 4 -->
-                    <div class="bg-primary-dark rounded-xl overflow-hidden shadow-lg border border-gray-700 group hover:-translate-y-2 transition-all duration-300" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="p-6">
-                            <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-accent-color transition">SQL Analysis Project</h4>
-                            <p class="text-gray-400 text-sm mb-4">Focused entirely on SQL analysis queries to extract valuable insights from large datasets.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-purple-400 border border-purple-400">Data Analytics</span>
-                                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-purple-400 border border-purple-400">SQL</span>
-                            </div>
-                            <a href="https://github.com/sky-shiva/sql_analysis_project" target="_blank" class="inline-flex items-center text-accent-color hover:text-white font-semibold transition">
-                                View Code <i class="fab fa-github ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project 5 -->
-                    <div class="bg-primary-dark rounded-xl overflow-hidden shadow-lg border border-gray-700 group hover:-translate-y-2 transition-all duration-300" data-aos="zoom-in" data-aos-delay="500">
-                        <div class="p-6">
-                            <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-accent-color transition">SmartAiRecruit</h4>
-                            <p class="text-gray-400 text-sm mb-4">Smart recruitment assistant leveraging AI to streamline the hiring process.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-pink-400 border border-pink-400">AI</span>
-                                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-pink-400 border border-pink-400">Automation</span>
-                            </div>
-                            <a href="https://github.com/sky-shiva/smart_recruitment_assistant" target="_blank" class="inline-flex items-center text-accent-color hover:text-white font-semibold transition">
-                                View Code <i class="fab fa-github ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project 6 -->
-                    <div class="bg-primary-dark rounded-xl overflow-hidden shadow-lg border border-gray-700 group hover:-translate-y-2 transition-all duration-300" data-aos="zoom-in" data-aos-delay="600">
-                        <div class="p-6">
-                            <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-accent-color transition">Data Cleaning Project</h4>
-                            <p class="text-gray-400 text-sm mb-4">A dedicated project for preprocessing and cleaning raw data for analysis readiness.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-orange-400 border border-orange-400">Pandas</span>
-                                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-orange-400 border border-orange-400">Cleaning</span>
-                            </div>
-                            <a href="https://github.com/sky-shiva/data-cleaning-project" target="_blank" class="inline-flex items-center text-accent-color hover:text-white font-semibold transition">
-                                View Code <i class="fab fa-github ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="bg-primary-dark rounded-xl overflow-hidden shadow-lg border border-gray-700 group hover:-translate-y-2 transition-all duration-300" data-aos="zoom-in" data-aos-delay="600">
-                        <div class="p-6">
-                            <h4 class="text-2xl font-bold text-white mb-2 group-hover:text-accent-color transition">BrainTumorPrediction</h4>
-                            <p class="text-gray-400 text-sm mb-4">Interesting project which involves Deeplearning</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-orange-400 border border-yellow-400">PyTorch</span>
-                                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-orange-400 border border-orange-400">NeuralNetwork</span>
-                            </div>
-                            <a href="https://github.com/sky-shiva/BrainTumorPrediction_using-CNN" target="_blank" class="inline-flex items-center text-accent-color hover:text-white font-semibold transition">
-                                View Code <i class="fab fa-github ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-
-
-                    <!-- Project 8 (Deployed) -->
-                    <div class="bg-primary-dark rounded-xl overflow-hidden shadow-lg border-2 border-accent-color/50 group hover:-translate-y-2 transition-all duration-300 col-span-1 md:col-span-2 lg:col-span-3" data-aos="fade-up">
-                        <div class="p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-                            <div>
-                                <h4 class="text-3xl font-bold text-white mb-2 group-hover:text-accent-color transition">Event Pulse - Event Management</h4>
-                                <p class="text-gray-400 mb-4">A complete frontend solution for event management. Features login simulation and sleek UI.</p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="px-3 py-1 text-sm rounded bg-gray-800 text-teal-400 border border-teal-400">Web Development</span>
-                                    <span class="px-3 py-1 text-sm rounded bg-gray-800 text-teal-400 border border-teal-400">Live Demo</span>
-                                </div>
-                            </div>
-                            <a href="https://eventpulse-evenza.netlify.app/login.html" target="_blank" class="px-8 py-3 bg-accent-color text-white rounded-full font-bold shadow-lg shadow-accent-color/30 hover:bg-accent-hover transition transform hover:scale-105">
-                                Visit Live Website &rarr;
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-  <!-- Certificates Section (PDF Downloads) -->
-        <section id="certificates" class="bg-primary-dark py-24 px-4">
-            <div class="max-w-7xl mx-auto">
-                <h3 class="text-4xl sm:text-5xl font-bold text-center mb-16 text-white" data-aos="fade-up">
-                    Certifications <span class="text-accent-color">& Documents</span>
-                </h3>
-                
-                <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-                    Click on any card to view or download the credential.
-                </p>
-
-                <!-- Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    
-                    <!-- 1. Oracle -->
-                    <a href="images/oracle.pdf" target="_blank" class="block group" data-aos="fade-up">
-                        <div class="bg-secondary-dark p-6 rounded-xl border border-gray-700 hover:border-accent-color transition duration-300 flex items-center gap-4 hover:bg-gray-800">
-                            <div class="bg-red-900/30 p-4 rounded-full text-red-400">
-                                <i class="fas fa-file-pdf text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-100 group-hover:text-accent-color">Oracle Professional</h4>
-                                <p class="text-sm text-gray-400">OCI Data Science</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- 2. Tata Forage -->
-                    <a href="images/Tata Forage Job simulation.pdf" target="_blank" class="block group" data-aos="fade-up" data-aos-delay="50">
-                        <div class="bg-secondary-dark p-6 rounded-xl border border-gray-700 hover:border-accent-color transition duration-300 flex items-center gap-4 hover:bg-gray-800">
-                            <div class="bg-blue-900/30 p-4 rounded-full text-blue-400">
-                                <i class="fas fa-file-pdf text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-100 group-hover:text-accent-color">Tata Forage</h4>
-                                <p class="text-sm text-gray-400">Job Simulation</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- 3. Cisco Data Science -->
-                    <a href="images/cisco.pdf" target="_blank" class="block group" data-aos="fade-up" data-aos-delay="100">
-                        <div class="bg-secondary-dark p-6 rounded-xl border border-gray-700 hover:border-accent-color transition duration-300 flex items-center gap-4 hover:bg-gray-800">
-                            <div class="bg-green-900/30 p-4 rounded-full text-green-400">
-                                <i class="fas fa-file-pdf text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-100 group-hover:text-accent-color">Cisco</h4>
-                                <p class="text-sm text-gray-400">Data Science</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- 4. Infosys DSA -->
-                    <a href="images/cert4.pdf" target="_blank" class="block group" data-aos="fade-up" data-aos-delay="150">
-                        <div class="bg-secondary-dark p-6 rounded-xl border border-gray-700 hover:border-accent-color transition duration-300 flex items-center gap-4 hover:bg-gray-800">
-                            <div class="bg-yellow-900/30 p-4 rounded-full text-yellow-400">
-                                <i class="fas fa-file-pdf text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-100 group-hover:text-accent-color">Infosys Springboard</h4>
-                                <p class="text-sm text-gray-400">DSA Certification</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- 5. Python Basic -->
-                    <a href="images/python_basic certificate.pdf" target="_blank" class="block group" data-aos="fade-up" data-aos-delay="200">
-                        <div class="bg-secondary-dark p-6 rounded-xl border border-gray-700 hover:border-accent-color transition duration-300 flex items-center gap-4 hover:bg-gray-800">
-                            <div class="bg-indigo-900/30 p-4 rounded-full text-indigo-400">
-                                <i class="fab fa-python text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-100 group-hover:text-accent-color">Python Basic</h4>
-                                <p class="text-sm text-gray-400">Programming Skills</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- 6. EduSkill Web Dev -->
-                    <a href="images/eduskill webdevelopment.pdf" target="_blank" class="block group" data-aos="fade-up" data-aos-delay="250">
-                        <div class="bg-secondary-dark p-6 rounded-xl border border-gray-700 hover:border-accent-color transition duration-300 flex items-center gap-4 hover:bg-gray-800">
-                            <div class="bg-pink-900/30 p-4 rounded-full text-pink-400">
-                                <i class="fas fa-code text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-100 group-hover:text-accent-color">EduSkill</h4>
-                                <p class="text-sm text-gray-400">Web Development</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- 7. Coursera -->
-                    <a href="images/Coursera 5NEA2VJZCDXB.pdf" target="_blank" class="block group" data-aos="fade-up" data-aos-delay="300">
-                        <div class="bg-secondary-dark p-6 rounded-xl border border-gray-700 hover:border-accent-color transition duration-300 flex items-center gap-4 hover:bg-gray-800">
-                            <div class="bg-blue-900/30 p-4 rounded-full text-blue-400">
-                                <i class="fas fa-award text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-100 group-hover:text-accent-color">Coursera</h4>
-                                <p class="text-sm text-gray-400">Course Completion</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- 9. Innovatech (Image) -->
-                    <a href="images/Innovatech%20certificate.jpg" target="_blank" class="block group" data-aos="fade-up" data-aos-delay="400">
-                        <div class="bg-secondary-dark p-6 rounded-xl border border-gray-700 hover:border-accent-color transition duration-300 flex items-center gap-4 hover:bg-gray-800">
-                            <div class="bg-orange-900/30 p-4 rounded-full text-orange-400">
-                                <i class="fas fa-image text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-100 group-hover:text-accent-color">Innovatech</h4>
-                                <p class="text-sm text-gray-400">Achievement</p>
-                            </div>
-                        </div>
-                    </a>
-
-                     <!-- 10. Tech Sync (Image) -->
-                     <a href="images/Tech%20sync%20certificate%20(3).png" target="_blank" class="block group" data-aos="fade-up" data-aos-delay="450">
-                        <div class="bg-secondary-dark p-6 rounded-xl border border-gray-700 hover:border-accent-color transition duration-300 flex items-center gap-4 hover:bg-gray-800">
-                            <div class="bg-purple-900/30 p-4 rounded-full text-purple-400">
-                                <i class="fas fa-image text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-100 group-hover:text-accent-color">Tech Sync</h4>
-                                <p class="text-sm text-gray-400">Workshop Participation</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- 11. KLH University -->
-                    <a href="images/KLH(BACHUPALLY).pdf" target="_blank" class="block group" data-aos="fade-up" data-aos-delay="500">
-                        <div class="bg-secondary-dark p-6 rounded-xl border border-gray-700 hover:border-accent-color transition duration-300 flex items-center gap-4 hover:bg-gray-800">
-                            <div class="bg-red-900/30 p-4 rounded-full text-red-400">
-                                <i class="fas fa-university text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-100 group-hover:text-accent-color">KLH University</h4>
-                                <p class="text-sm text-gray-400">Academic Document</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- 12. Assessment Score -->
-                    <a href="images/ScoreReport.pdf" target="_blank" class="block group" data-aos="fade-up" data-aos-delay="550">
-                        <div class="bg-secondary-dark p-6 rounded-xl border border-gray-700 hover:border-accent-color transition duration-300 flex items-center gap-4 hover:bg-gray-800">
-                            <div class="bg-green-900/30 p-4 rounded-full text-green-400">
-                                <i class="fas fa-chart-bar text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-100 group-hover:text-accent-color">Score Report</h4>
-                                <p class="text-sm text-gray-400">Technical Assessment</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- 13. Other Certificate -->
-                    <a href="images/kkE9HyeNcw6rwCRGw_pmnMSL4QiQ9JCgE3W_68e2737f51b2209a60ba4757_1761648036576_completion_certificate.pdf" target="_blank" class="block group" data-aos="fade-up" data-aos-delay="600">
-                        <div class="bg-secondary-dark p-6 rounded-xl border border-gray-700 hover:border-accent-color transition duration-300 flex items-center gap-4 hover:bg-gray-800">
-                            <div class="bg-gray-700/50 p-4 rounded-full text-gray-300">
-                                <i class="fas fa-certificate text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-100 group-hover:text-accent-color">AWS Job Simulation</h4>
-                                <p class="text-sm text-gray-400">Additional Certification</p>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <!-- Contact Section (Fixed) -->
-        <section id="contact" class="bg-gradient-to-b from-secondary-dark to-primary-dark py-24 px-4">
-            <div class="max-w-4xl mx-auto bg-gray-800/50 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl border border-gray-700" data-aos="flip-up">
-                <h3 class="text-4xl font-bold text-center mb-6 text-white">
-                    Get In <span class="text-accent-color">Touch</span>
-                </h3>
-                <p class="text-center text-gray-400 mb-10">
-                    Ready to collaborate on a data project? <br>
-                    Send me a message directly ....................!
-                    Email:shiva220620@gmail.com
-                    
-                </p>
-                
-                <!-- This method works immediately without any external accounts -->
-               <form action="contact.php" method="POST" class="space-y-6">
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-medium text-accent-color mb-2">Name</label>
-                            <input type="text" name="Name" required class="w-full px-4 py-3 bg-primary-dark border border-gray-600 rounded-lg focus:ring-2 focus:ring-accent-color text-white outline-none" placeholder="Your Name">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-accent-color mb-2">Email</label>
-                            <input type="email" name="Email" required class="w-full px-4 py-3 bg-primary-dark border border-gray-600 rounded-lg focus:ring-2 focus:ring-accent-color text-white outline-none" placeholder="Your Email">
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-accent-color mb-2">Message</label>
-                        <textarea name="Message" rows="5" required class="w-full px-4 py-3 bg-primary-dark border border-gray-600 rounded-lg focus:ring-2 focus:ring-accent-color text-white outline-none" placeholder="I have an idea for a project..."></textarea>
-                    </div>
-
-                    <div class="text-center">
-                        <button type="submit" class="w-full md:w-auto px-12 py-4 text-xl font-bold bg-accent-color text-white rounded-lg hover:bg-accent-hover transition duration-300 shadow-xl transform hover:scale-105">
-                            Send Email <i class="fas fa-paper-plane ml-2"></i>
-                        </button>
-                    </div>
-                </form>
-
-                <div class="mt-12 text-center border-t border-gray-700 pt-8">
-                     <p class="text-gray-400 mb-4">Or connect via:</p>
-                     <div class="flex justify-center space-x-8">
-                        <a href="https://www.linkedin.com/in/shiva-kumar-yadav-201661337" target="_blank" class="flex items-center gap-2 text-gray-300 hover:text-accent-color transition">
-                            <i class="fab fa-linkedin text-xl"></i> LinkedIn
-                        </a>
-                        <a href="https://www.fiverr.com/users/shivakumar_7781/manage_gigs" target="_blank" class="flex items-center gap-2 text-gray-300 hover:text-accent-color transition">fiverr</a>
-                     </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-primary-dark text-center py-8 text-gray-500 text-sm border-t border-gray-800">
-        &copy; 2025 Shiva Kumar Yadav. Built with Code, Logic, and <span class="text-red-500">&hearts;</span>.
-    </footer>
-
-    <!-- Animation Script -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Initialize AOS Animation
-        AOS.init({
-            once: true, // Animation happens only once - while scrolling down
-            offset: 100, // Offset (in px) from the original trigger point
-            duration: 800, // Duration of animation
-            easing: 'ease-out-cubic',
-        });
-
-        // Simple script to ensure progress bars animate when visible
-        // (AOS handles the fade in, CSS handles the width growth)
-    </script>
 </body>
 </html>
