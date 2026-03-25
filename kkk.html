@@ -13,7 +13,7 @@
 
         body {
             background: black;
-            color: #04954d;
+            color: #049534;
             overflow: hidden;
         }
 
@@ -51,7 +51,7 @@
         .terminal {
             margin-top: 30px;
             background: rgba(0, 255, 136, 0.05);
-            border: 1px solid #14cf0a;
+            border: 1px solid #09ea14;
             padding: 20px;
             width: 90%;
             max-width: 600px;
@@ -66,7 +66,7 @@
 
         @keyframes glitch {
             0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
+            100% { transform: translate(-2px, 2px); }
             40% { transform: translate(2px, -2px); }
             60% { transform: translate(-1px, 1px); }
             80% { transform: translate(1px, -1px); }
@@ -75,8 +75,8 @@
 
         @keyframes typing {
             0% { opacity: 0.2; }
-            50% { opacity: 1; }
-            100% { opacity: 0.2; }
+            500% { opacity: 1; }
+            100% { opacity: 0.5; }
         }
     </style>
 </head>
@@ -85,7 +85,7 @@
 <canvas id="matrix"></canvas>
 
 <div class="container">
-    <h1>⚠ Hacked By Karthikeya ⚠</h1>
+    <h1>⚠ Hacked By Shiva ⚠</h1>
     <p>
         Our servers are undergoing upgrades.<br>
         Engineers are inside the system.<br>
@@ -107,8 +107,8 @@
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*";
-    const fontSize = 16;
+    const letters = "shivaky";
+    const fontSize = 10;
     const columns = canvas.width / fontSize;
 
     const drops = Array(Math.floor(columns)).fill(1);
