@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shiva Kumar Yadav — Portfolio (Mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --bg:    #090909;
+  --bg2:   #111111;
+  --bg3:   #1a1a1a;
+  --text:  #f0ede6;
+  --muted: #555555;
+  --dim:   #333333;
+  --border:#232323;
+  --card:  #0f0f0f;
+  --inv:   #090909;
+  --scan:  rgba(255,255,255,0.018);
+}
+[data-theme="light"] {
+  --bg:    #f0eae8;
+  --bg2:   #edeae4;
+  --bg3:   #e9e7e3;
+  --text:  #0a0a0a;
+  --muted: #888888;
+  --dim:   #cccccc;
+  --border:#d4d1cb;
+  --card:  #f0ede8;
+  --inv:   #f5f3ee;
+  --scan:  rgba(0,0,0,0.018);
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  overflow-x:hidden;
+  transition:background .35s,color .35s;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;
+  background:repeating-linear-gradient(0deg,var(--scan) 0,var(--scan) 1px,transparent 1px,transparent 3px);
+}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+::selection{background:var(--text);color:var(--bg)}
+
+/* ── PROGRESS BAR ── */
+#prog{position:fixed;top:0;left:0;z-index:2000;height:1px;width:0%;background:var(--text);transition:width .1s}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:var(--bg);border-bottom:1px solid var(--border);
+  transition:background .35s;
+}
+.nav-w{max-width:1280px;margin:0 auto;padding:0 2rem;height:54px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--text);text-decoration:none;letter-spacing:0}
+.logo .dim{color:var(--muted)}
+.blink{display:inline-block;width:8px;height:13px;background:var(--text);margin-left:2px;vertical-align:middle;animation:blink 1s steps(1) infinite}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.nav-r{display:flex;align-items:center;gap:2rem}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--muted);text-decoration:none;letter-spacing:.5px;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.toggle{
+  background:none;border:1px solid var(--border);
+  color:var(--muted);font-family:'Space Mono',monospace;font-size:.68rem;
+  padding:.28rem .65rem;border-radius:3px;cursor:pointer;letter-spacing:.5px;
+  transition:all .2s;
+}
+.toggle:hover{color:var(--text);border-color:var(--text)}
+
+/* ── SECTION ── */
+section{padding:6rem 2rem}
+.wrap{max-width:1280px;margin:0 auto}
+
+.sec-head{display:flex;align-items:center;gap:1.5rem;margin-bottom:4rem}
+.sec-num{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--muted);letter-spacing:2px;white-space:nowrap}
+.sec-rule{flex:1;height:1px;background:var(--border)}
+.sec-title{font-family:'Space Mono',monospace;font-size:clamp(2.2rem,5vw,3.8rem);color:var(--text);letter-spacing:-1px;line-height:1.05}
+
+/* ── HERO ── */
+#hero{min-height:100vh;padding-top:90px;display:flex;align-items:center;position:relative}
+.hero-grid{display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:center}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'Space Mono',monospace;font-size:.68rem;color:var(--muted);
+  letter-spacing:2px;text-transform:uppercase;margin-bottom:1.4rem;
+}
+.eyebrow::before{content:'> ';color:var(--text)}
+
+.hero-name{
+  font-family:'Space Mono',monospace;
+  font-size:clamp(3rem,8vw,7rem);
+  line-height:.97;letter-spacing:-2px;color:var(--text);margin-bottom:1rem;
+}
+.hero-name .outline{-webkit-text-stroke:1px var(--text);color:transparent}
+
+.tagline{font-family:'Space Mono',monospace;font-size:.85rem;color:var(--muted);min-height:1.6em;margin-bottom:2.2rem}
+.tagline .tw{color:var(--text)}
+.cur{display:inline-block;width:2px;height:.9em;background:var(--text);vertical-align:middle;animation:blink .8s steps(1) infinite}
+
+.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-s{
+  padding:.65rem 1.6rem;background:var(--text);color:var(--bg);
+  border:1px solid var(--text);font-family:'Space Mono',monospace;
+  font-size:.72rem;letter-spacing:.3px;text-decoration:none;border-radius:3px;
+  transition:background .2s,color .2s;
+}
+.btn-s:hover{background:transparent;color:var(--text)}
+.btn-o{
+  padding:.65rem 1.6rem;background:transparent;color:var(--text);
+  border:1px solid var(--border);font-family:'Space Mono',monospace;
+  font-size:.72rem;letter-spacing:.3px;text-decoration:none;border-radius:3px;
+  transition:border-color .2s;
+}
+.btn-o:hover{border-color:var(--text)}
+
+.hero-links{display:flex;gap:1.5rem;align-items:center}
+.hero-links a{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.hero-links a:hover{color:var(--text)}
+.hero-links .sep{color:var(--border)}
+
+/* Terminal */
+.terminal{background:var(--bg2);border:1px solid var(--border);border-radius:7px;overflow:hidden}
+.term-bar{padding:.75rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:1rem}
+.dots{display:flex;gap:5px}
+.dot{width:10px;height:10px;border-radius:50%}
+.dr{background:#ff5f57}.dy{background:#febc2e}.dg{background:#28c840}
+.term-path{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted);margin-left:auto}
+.term-body{padding:1.4rem}
+.tl{font-family:'Space Mono',monospace;font-size:.72rem;line-height:2;color:var(--muted)}
+.tp{color:var(--text)} .tc{color:var(--text)} .ts{color:var(--text);opacity:.8} .tk{color:var(--muted)}
+.tb{color:var(--dim)}
+
+.status{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);
+  border:1px solid var(--border);border-radius:100px;padding:.28rem .75rem;
+  margin-top:.9rem;
+}
+.sdot{width:6px;height:6px;border-radius:50%;background:#28c840;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(40,200,64,.4)}50%{box-shadow:0 0 0 4px rgba(40,200,64,0)}}
+
+/* ── ABOUT ── */
+#about{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.about-text p{color:var(--muted);font-size:.92rem;line-height:1.95;margin-bottom:1rem}
+.about-text p strong{color:var(--text);font-weight:600}
+.quote{
+  margin:1.8rem 0;padding:1.1rem 1.5rem;
+  border-left:2px solid var(--text);
+  font-family:'Space Mono',monospace;font-size:.72rem;
+  color:var(--muted);font-style:italic;line-height:1.9;
+}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;border:1px solid var(--border);margin-top:.5rem}
+.stat{padding:1.8rem;background:var(--bg);text-align:center;transition:background .2s;cursor:default}
+.stat:hover{background:var(--bg3)}
+.sn{font-family:'Space Mono',monospace;font-size:2.2rem;color:var(--text);display:block;line-height:1}
+.sl{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);margin-top:.4rem;letter-spacing:1.5px;text-transform:uppercase}
+
+/* ── SKILLS ── */
+#skills{background:var(--bg)}
+.skill-cats{display:flex;flex-direction:column;gap:2.5rem}
+.cat-label{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:.9rem}
+.cat-label::before{content:'// '}
+.pills{display:flex;flex-wrap:wrap;gap:.45rem}
+.pill{
+  padding:.45rem .95rem;border:1px solid var(--border);border-radius:3px;
+  font-family:'Space Mono',monospace;font-size:.68rem;color:var(--muted);
+  transition:all .2s;display:flex;align-items:center;gap:.45rem;cursor:default;
+}
+.pill:hover{border-color:var(--text);color:var(--text);background:var(--bg2)}
+.pd{width:4px;height:4px;border-radius:50%;background:var(--muted)}
+
+/* ── PROJECTS ── */
+#portfolio{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid var(--border)}
+.pc{background:var(--bg);padding:1.7rem;transition:background .2s;position:relative}
+.pc:hover{background:var(--bg3)}
+.pf{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);margin-bottom:.9rem;letter-spacing:.3px}
+.pt{font-family:'Space Mono',monospace;font-size:.88rem;color:var(--text);margin-bottom:.6rem;line-height:1.4;font-weight:700}
+.pd2{font-size:.8rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem}
+.ptags{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:1.1rem}
+.ptag{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);border:1px solid var(--border);padding:.18rem .48rem;border-radius:2px}
+.pl{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:.35rem;transition:color .2s}
+.pl::before{content:'→'}
+.pl:hover{color:var(--text)}
+.upcoming{opacity:.55}
+
+.pfeat{
+  grid-column:span 3;background:var(--bg);
+  padding:2.2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;
+  transition:background .2s;
+}
+.pfeat:hover{background:var(--bg3)}
+.pfl{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:.7rem}
+.pft{font-family:'Space Mono',monospace;font-size:1.3rem;color:var(--text);margin-bottom:.7rem}
+.pfd{font-size:.82rem;color:var(--muted);max-width:480px;line-height:1.7}
+.pfa{
+  padding:.65rem 1.6rem;border:1px solid var(--text);color:var(--text);
+  font-family:'Space Mono',monospace;font-size:.68rem;text-decoration:none;border-radius:3px;
+  transition:background .2s,color .2s;white-space:nowrap;
+}
+.pfa:hover{background:var(--text);color:var(--bg)}
+
+/* ── RESUME ── */
+#resume{background:var(--bg)}
+.resume-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.ri h3{font-family:'Space Mono',monospace;font-size:1.1rem;color:var(--text);margin-bottom:.8rem;letter-spacing:-0.3px}
+.ri p{font-size:.85rem;color:var(--muted);line-height:1.9;margin-bottom:1.5rem}
+.ri-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.ri-tag{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);border:1px solid var(--border);padding:.25rem .6rem;border-radius:2px}
+.resume-frame{
+  border:1px solid var(--border);border-radius:5px;background:var(--bg2);
+  height:380px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;
+}
+.rf-icon{font-family:'Space Mono',monospace;font-size:2.5rem;color:var(--border)}
+.rf-txt{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:2px}
+
+/* ── CERTS ── */
+#certificates{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cert-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border:1px solid var(--border)}
+.cert{background:var(--bg);padding:1.5rem;transition:background .2s;cursor:default}
+.cert:hover{background:var(--bg3)}
+.cert-icon{font-family:'Space Mono',monospace;font-size:1.5rem;color:var(--dim);margin-bottom:.7rem}
+.cert-org{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:.3rem}
+.cert-name{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--text);line-height:1.4;font-weight:700}
+.cert-sub{font-size:.72rem;color:var(--muted);margin-top:.3rem}
+
+/* ── CONTACT ── */
+#contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem}
+.cl h3{font-family:'Space Mono',monospace;font-size:1.9rem;color:var(--text);letter-spacing:-1px;margin-bottom:1rem;line-height:1.15}
+.cl p{font-size:.88rem;color:var(--muted);line-height:1.9;margin-bottom:1.8rem}
+.clinks{display:flex;flex-direction:column;gap:1px;border:1px solid var(--border)}
+.ci{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.95rem 1.1rem;background:var(--bg2);
+  color:var(--muted);text-decoration:none;
+  font-family:'Space Mono',monospace;font-size:.72rem;
+  transition:background .2s,color .2s;
+}
+.ci:hover{background:var(--bg3);color:var(--text)}
+.ci-lbl{font-size:.6rem;color:var(--dim)}
+.cform{display:flex;flex-direction:column;gap:.9rem}
+.fg{display:flex;flex-direction:column;gap:.35rem}
+.fg label{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.fg input,.fg textarea{
+  width:100%;padding:.75rem .9rem;
+  background:var(--bg2);border:1px solid var(--border);
+  color:var(--text);font-family:'Space Mono',monospace;font-size:.75rem;
+  outline:none;border-radius:3px;transition:border-color .2s;
+}
+.fg input:focus,.fg textarea:focus{border-color:var(--text)}
+.fg textarea{resize:vertical;min-height:110px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+
+/* ── FOOTER ── */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.8rem 2rem}
+.fw{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.fl{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted)}
+.fr{display:flex;gap:1.5rem}
+.fr a{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.fr a:hover{color:var(--text)}
+
+/* ── BACK TOP ── */
+#bk{
+  position:fixed;bottom:2rem;right:2rem;z-index:500;
+  width:40px;height:40px;background:var(--bg2);border:1px solid var(--border);
+  color:var(--muted);font-family:'Space Mono',monospace;font-size:.7rem;
+  border-radius:3px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s,color .2s,border-color .2s;
+}
+#bk.show{opacity:1;pointer-events:all}
+#bk:hover{color:var(--text);border-color:var(--text)}
+
+/* ── ANIMATIONS ── */
+.fu{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fu.vis{opacity:1;transform:none}
+[data-d="1"]{transition-delay:.1s}[data-d="2"]{transition-delay:.2s}
+[data-d="3"]{transition-delay:.3s}[data-d="4"]{transition-delay:.4s}
+[data-d="5"]{transition-delay:.5s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-grid,.about-grid,.resume-grid,.contact-grid{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .pfeat{grid-column:span 1;flex-direction:column}
+  .cert-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+}
+@media(max-width:600px){
+  .frow{grid-template-columns:1fr}
+  .cert-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+<button id="bk" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-w">
+    <a class="logo" href="#hero"><span class="dim">~/</span>shiva_ky<span class="blink"></span></a>
+    <div class="nav-r">
+      <div class="nav-links">
+        <a href="#about">about</a>
+        <a href="#skills">skills</a>
+        <a href="#portfolio">work</a>
+        <a href="#resume">resume</a>
+        <a href="#certificates">certs</a>
+        <a href="#contact">contact</a>
+      </div>
+      <button class="toggle" id="themeBtn" onclick="toggleTheme()">[ light ]</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="fu vis">
+        <div class="eyebrow">available for internships &amp; collabs</div>
+        <h1 class="hero-name">SHIVA<br>KUMAR<br><span class="outline">YADAV</span></h1>
+        <p class="tagline"><span class="tw" id="typed"></span><span class="cur"></span></p>
+        <div class="hero-btns">
+          <a href="#portfolio" class="btn-s">view_work()</a>
+          <a href="#resume" class="btn-o">get_resume()</a>
+          <a href="#contact" class="btn-o">hire_me()</a>
+        </div>
+        <div class="hero-links">
+          <a href="https://github.com/sky-shiva" target="_blank">github</a>
+          <span class="sep">/</span>
+          <a href="https://www.linkedin.com/in/shiva-kumar-yadav-201661337" target="_blank">linkedin</a>
+          <span class="sep">/</span>
+          <a href="mailto:shiva220620@gmail.com">email</a>
+          <span class="sep">/</span>
+          <a href="https://www.fiverr.com/users/shivakumar_7781" target="_blank">fiverr</a>
+        </div>
+      </div>
+      <div class="fu vis" style="transition-delay:.2s">
+        <div class="terminal">
+          <div class="term-bar">
+            <div class="dots"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div></div>
+            <div class="term-path">shiva@portfolio: ~/about</div>
+          </div>
+          <div class="term-body">
+            <div class="tl"><span class="tp">$ </span><span class="tc">cat profile.json</span></div>
+            <div class="tl"><span class="tb">{</span></div>
+            <div class="tl">&nbsp;&nbsp;<span class="tk">"name"</span><span class="tb">:</span> <span class="ts">"Shiva Kumar Yadav"</span><span class="tb">,</span></div>
+            <div class="tl">&nbsp;&nbsp;<span class="tk">"degree"</span><span class="tb">:</span> <span class="ts">"B.Tech ECE + GenAI"</span><span class="tb">,</span></div>
+            <div class="tl">&nbsp;&nbsp;<span class="tk">"university"</span><span class="tb">:</span> <span class="ts">"KLH University, HYD"</span><span class="tb">,</span></div>
+            <div class="tl">&nbsp;&nbsp;<span class="tk">"year"</span><span class="tb">:</span> <span class="ts">"3rd Year"</span><span class="tb">,</span></div>
+            <div class="tl">&nbsp;&nbsp;<span class="tk">"focus"</span><span class="tb">:</span> [<span class="ts">"Data Science"</span><span class="tb">,</span> <span class="ts">"CV"</span><span class="tb">,</span> <span class="ts">"DL"</span>]<span class="tb">,</span></div>
+            <div class="tl">&nbsp;&nbsp;<span class="tk">"location"</span><span class="tb">:</span> <span class="ts">"Hyderabad, IN"</span><span class="tb">,</span></div>
+            <div class="tl">&nbsp;&nbsp;<span class="tk">"status"</span><span class="tb">:</span> <span class="ts">"open_to_opportunities"</span></div>
+            <div class="tl"><span class="tb">}</span></div>
+          </div>
+        </div>
+        <div class="status"><div class="sdot"></div> online · Hyderabad, IN · open to work</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head fu">
+      <span class="sec-num">01 / ABOUT</span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="about-grid">
+      <div class="fu">
+        <h2 class="sec-title">About<br>Me.</h2>
+        <div style="margin-top:2rem">
+          <p>Hey, I'm <strong style="color:rgb(184, 138, 99);">Shiva Kumar Yadav</strong> — a data science enthusiast who loves building things that actually solve problems.</p>
+          <p>I'm a <strong>3rd-year B.Tech ECE student</strong> with a Generative AI specialisation at KLH University, constantly tinkering with <strong>AI, computer vision, and deep learning</strong> like they're puzzle pieces waiting to click.</p>
+          <div class="quote">"Data, to me, is a story. Code is the pen.<br>And I'm just trying to write something worth reading."</div>
+          <p>When I'm not debugging or wrestling with Git, I'm building research-grade projects — from low-light image enhancement to AI safety systems — and pushing my limits at every turn.</p>
+          <p style="margin-top:1rem;font-weight:600;color:var(--text);font-size:.88rem">Curious. Hands-on. Slightly stubborn. Always building.</p>
+        </div>
+      </div>
+      <div class="fu" style="transition-delay:.2s">
+        <div class="stats">
+          <div class="stat"><span class="sn">10+</span><div class="sl">Projects</div></div>
+          <div class="stat"><span class="sn">10+</span><div class="sl">Certs</div></div>
+          <div class="stat"><span class="sn">20+</span><div class="sl">Technologies</div></div>
+          <div class="stat"><span class="sn">∞</span><div class="sl">Curiosity</div></div>
+        </div>
+        <div style="margin-top:2rem;border:1px solid var(--border);border-radius:4px;overflow:hidden">
+          <div style="padding:.7rem 1rem;border-bottom:1px solid var(--border);font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted)">$ ls -la goals/</div>
+          <div style="padding:1rem 1.2rem">
+            <div class="tl"><span class="tp">→ </span>IIT internship applications</div>
+            <div class="tl"><span class="tp">→ </span>Research-grade CV projects</div>
+            <div class="tl"><span class="tp">→ </span>Open-source contributions</div>
+            <div class="tl"><span class="tp">→ </span>Low-light image enhancement pipeline</div>
+            <div class="tl"><span class="tp">→ </span>AI safety systems research</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head fu">
+      <span class="sec-num">02 / SKILLS</span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="skill-cats">
+      <div class="fu">
+        <div class="cat-label">machine_learning &amp; ai</div>
+        <div class="pills">
+          <div class="pill"><span class="pd"></span>PyTorch</div>
+          <div class="pill"><span class="pd"></span>TensorFlow</div>
+          <div class="pill"><span class="pd"></span>Keras</div>
+          <div class="pill"><span class="pd"></span>Scikit-learn</div>
+          <div class="pill"><span class="pd"></span>Computer Vision</div>
+          <div class="pill"><span class="pd"></span>Deep Learning</div>
+          <div class="pill"><span class="pd"></span>CNN / ANN</div>
+          <div class="pill"><span class="pd"></span>OpenCV / PIL</div>
+          <div class="pill"><span class="pd"></span>Retrieval-Augmented Generation</div>
+          <div class="pill"><span class="pd"></span>LangChain</div>
+        </div>
+      </div>
+      <div class="fu" data-d="1">
+        <div class="cat-label">data_science &amp; analytics</div>
+        <div class="pills">
+          <div class="pill"><span class="pd"></span>Python</div>
+          <div class="pill"><span class="pd"></span>Pandas</div>
+          <div class="pill"><span class="pd"></span>NumPy</div>
+          <div class="pill"><span class="pd"></span>Matplotlib</div>
+          <div class="pill"><span class="pd"></span>Seaborn</div>
+          <div class="pill"><span class="pd"></span>EDA &amp; Feature Engineering</div>
+          <div class="pill"><span class="pd"></span>MS Excel (Advanced)</div>
+          <div class="pill"><span class="pd"></span>SciPy</div>
+        </div>
+      </div>
+      <div class="fu" data-d="2">
+        <div class="cat-label">databases &amp; backend</div>
+        <div class="pills">
+          <div class="pill"><span class="pd"></span>SQL / MySQL</div>
+          <div class="pill"><span class="pd"></span>Flask</div>
+          <div class="pill"><span class="pd"></span>Python PDBC</div>
+          <div class="pill"><span class="pd"></span>Python OOP</div>
+          <div class="pill"><span class="pd"></span>Agentic AI</div>
+          <div class="pill"><span class="pd"></span>Vector Databases</div>
+          <div class="pill"><span class="pd"></span>Streamlit</div>
+          <div class="pill"><span class="pd"></span>n8n Automation</div>
+        </div>
+      </div>
+      <div class="fu" data-d="3">
+        <div class="cat-label">tools &amp; workflow</div>
+        <div class="pills">
+          <div class="pill"><span class="pd"></span>Git &amp; GitHub</div>
+          <div class="pill"><span class="pd"></span>Jupyter Notebook</div>
+          <div class="pill"><span class="pd"></span>VS Code</div>
+          <div class="pill"><span class="pd"></span>HTML / CSS</div>
+          <div class="pill"><span class="pd"></span>Colab</div>
+          <div class="pill"><span class="pd"></span>Java (Basics)</div>
+          <div class="pill"><span class="pd"></span>Data Storytelling</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="sec-head fu">
+      <span class="sec-num">03 / WORK</span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="proj-grid fu">
+      <div class="pc">
+        <div class="pf">proj_01.py</div>
+        <div class="pt">TGSRTC Ticketing System</div>
+        <p class="pd2">Python OOPs, Flask, Socket, Threading, QR Code integration with payment simulation for real-world transit ticketing.</p>
+        <div class="ptags"><span class="ptag">Python</span><span class="ptag">Flask</span><span class="ptag">OOP</span><span class="ptag">Socket</span></div>
+        <a href="https://github.com/sky-shiva/Tgsrtc-Ticketing-system" class="pl" target="_blank">view_code()</a>
+      </div>
+      <div class="pc">
+        <div class="pf">proj_02.py</div>
+        <div class="pt">Smart AI Waste Segregation</div>
+        <p class="pd2">AI-powered concept to automate waste management using machine intelligence and computer vision.</p>
+        <div class="ptags"><span class="ptag">AI</span><span class="ptag">CV</span><span class="ptag">HTML</span></div>
+        <a href="https://github.com/sky-shiva/smart-ai-waste-segregation" class="pl" target="_blank">view_code()</a>
+      </div>
+      <div class="pc">
+        <div class="pf">proj_03.sql</div>
+        <div class="pt">Superstore Management</div>
+        <p class="pd2">Management system with PDBC for efficient data handling, queries, and store operations.</p>
+        <div class="ptags"><span class="ptag">SQL</span><span class="ptag">Python</span><span class="ptag">PDBC</span></div>
+        <a href="https://github.com/sky-shiva/Superstore-Management-system" class="pl" target="_blank">view_code()</a>
+      </div>
+      <div class="pc">
+        <div class="pf">proj_04.ipynb</div>
+        <div class="pt">Brain Tumor Prediction</div>
+        <p class="pd2">Deep learning CNN model for detecting brain tumors from MRI scans with high classification accuracy.</p>
+        <div class="ptags"><span class="ptag">PyTorch</span><span class="ptag">CNN</span><span class="ptag">MedAI</span></div>
+        <a href="https://github.com/sky-shiva/BrainTumorPrediction_using-CNN" class="pl" target="_blank">view_code()</a>
+      </div>
+      <div class="pc">
+        <div class="pf">proj_05.ipynb</div>
+        <div class="pt">Customer Churn Prediction</div>
+        <p class="pd2">ANN model to predict telecom customer churn — encoding, scaling, and classification metrics.</p>
+        <div class="ptags"><span class="ptag">Keras</span><span class="ptag">ANN</span><span class="ptag">Pandas</span></div>
+        <a href="https://github.com/sky-shiva/CustomerChurnPred_DeepLearning" class="pl" target="_blank">view_code()</a>
+      </div>
+      <div class="pc">
+        <div class="pf">proj_06.py</div>
+        <div class="pt">SmartAiRecruit</div>
+        <p class="pd2">Smart recruitment assistant leveraging AI to streamline the hiring process with automated screening.</p>
+        <div class="ptags"><span class="ptag">AI</span><span class="ptag">Automation</span><span class="ptag">NLP</span></div>
+        <a href="https://github.com/sky-shiva/smart_recruitment_assistant" class="pl" target="_blank">view_code()</a>
+      </div>
+      <div class="pc">
+        <div class="pf">proj_07.ipynb</div>
+        <div class="pt">Netflix DataViz</div>
+        <p class="pd2">End-to-end EDA and visualization of Netflix content trends using Python and Matplotlib.</p>
+        <div class="ptags"><span class="ptag">Python</span><span class="ptag">EDA</span><span class="ptag">Matplotlib</span></div>
+        <a href="https://github.com/sky-shiva/Netflix_DataViz_Matplotlib" class="pl" target="_blank">view_code()</a>
+      </div>
+      <div class="pc">
+        <div class="pf">proj_08.sql</div>
+        <div class="pt">SQL Analysis Project</div>
+        <p class="pd2">Advanced SQL queries extracting insights from large datasets with complex joins and aggregations.</p>
+        <div class="ptags"><span class="ptag">SQL</span><span class="ptag">Analytics</span></div>
+        <a href="https://github.com/sky-shiva/sql_analysis_project" class="pl" target="_blank">view_code()</a>
+      </div>
+      <div class="pc upcoming">
+        <div class="pf">proj_10.??? — upcoming</div>
+        <div class="pt">Project Nova</div>
+        <p class="pd2">Something big is cooking. Stay tuned for the reveal.</p>
+        <div class="ptags"><span class="ptag">classified</span></div>
+        <a href="projectnova.html" class="pl">view_info()</a>
+      </div>
+      <div class="pfeat">
+        <div>
+          <div class="pfl">✦ &nbsp;featured · live · deployed</div>
+          <div class="pft">Event Pulse — Event Management</div>
+          <p class="pfd">A complete frontend solution for event management with login simulation and a polished UI. Live on Netlify.</p>
+        </div>
+        <a href="https://eventpulse-evenza.netlify.app/login.html" target="_blank" class="pfa">visit_live() →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="wrap">
+    <div class="sec-head fu">
+      <span class="sec-num">04 / RESUME</span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="resume-grid fu">
+      <div class="ri">
+        <h3>Shiva Kumar Yadav</h3>
+        <div class="ri-tags">
+          <span class="ri-tag">B.Tech ECE + GenAI</span>
+          <span class="ri-tag">KLH University</span>
+          <span class="ri-tag">Hyderabad, IN</span>
+          <span class="ri-tag">2nd Year · 2026</span>
+        </div>
+        <p>Data Science · Deep Learning · Computer Vision · SQL<br>
+        Open to internships, research collaborations, and freelance projects.</p>
+        <div style="display:flex;gap:.8rem;flex-wrap:wrap">
+          <a href="Resume 10-5-26.docx" download class="btn-s" style="font-size:.68rem">download_pdf()</a>
+          <a href="resumeonline.html" target="_blank" class="btn-o" style="font-size:.68rem">view_online()</a>
+        </div>
+        <div style="margin-top:1.5rem;font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted);line-height:1.9">
+          <div>→ Last updated: May 2026</div>
+          <div>→ Format: PDF · 1 page</div>
+          <div>→ ATS-friendly · Clean layout</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="wrap">
+    <div class="sec-head fu">
+      <span class="sec-num">05 / CERTS</span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="cert-grid fu">
+      <div class="cert">
+        <div class="cert-icon">[ ◉ ]</div>
+        <div class="cert-org">Oracle</div>
+        <div class="cert-name">OCI Data Science Professional</div>
+        <div class="cert-sub">Technical Certification</div>
+      </div>
+      <div class="cert">
+        <div class="cert-icon">[ ◉ ]</div>
+        <div class="cert-org">MongoDB</div>
+        <div class="cert-name">MongoDB Certified Developer</div>
+        <div class="cert-sub"></div>
+      </div>
+      <div class="cert">
+        <div class="cert-icon">[ ◉ ]</div>
+        <div class="cert-org">Tata Forage</div>
+        <div class="cert-name">Job Simulation</div>
+        <div class="cert-sub">Industry Experience</div>
+      </div>
+      <div class="cert">
+        <div class="cert-icon">[ ◉ ]</div>
+        <div class="cert-org">Cisco</div>
+        <div class="cert-name">Data Science Fundamentals</div>
+        <div class="cert-sub">Networking Academy</div>
+      </div>
+      <div class="cert">
+        <div class="cert-icon">[ ◉ ]</div>
+        <div class="cert-org">Infosys Springboard</div>
+        <div class="cert-name">DSA Certification</div>
+        <div class="cert-sub">Algorithm Design</div>
+      </div>
+      <div class="cert">
+        <div class="cert-icon">[ ◉ ]</div>
+        <div class="cert-org">HackerRank</div>
+        <div class="cert-name">Python Basic</div>
+        <div class="cert-sub">Programming Skills</div>
+      </div>
+      <div class="cert">
+        <div class="cert-icon">[ ◉ ]</div>
+        <div class="cert-org">EduSkill</div>
+        <div class="cert-name">Web Development</div>
+        <div class="cert-sub">Frontend Fundamentals</div>
+      </div>
+      <div class="cert">
+        <div class="cert-icon">[ ◉ ]</div>
+        <div class="cert-org">Coursera</div>
+        <div class="cert-name">Course Completion</div>
+        <div class="cert-sub">Online Learning</div>
+      </div>
+      <div class="cert">
+        <div class="cert-icon">[ ◉ ]</div>
+        <div class="cert-org">AWS Forage</div>
+        <div class="cert-name">Job Simulation</div>
+        <div class="cert-sub">Completion Certificate</div>
+      </div>
+      <div class="cert" style="cursor:pointer" onclick="alert('Innovatech certificate image will open in lightbox')">
+        <div class="cert-icon">[ ◉ ]</div>
+        <div class="cert-org">Innovatech</div>
+        <div class="cert-name">Achievement Award</div>
+        <div class="cert-sub" style="color:var(--text);font-size:.65rem;margin-top:.5rem">→ view certificate</div>
+      </div>
+      <div class="cert" style="cursor:pointer" onclick="alert('Tech Sync certificate image will open in lightbox')">
+        <div class="cert-icon">[ ◉ ]</div>
+        <div class="cert-org">Tech Sync</div>
+        <div class="cert-name">Workshop Participation</div>
+        <div class="cert-sub" style="color:var(--text);font-size:.65rem;margin-top:.5rem">→ view certificate</div>
+      </div>
+      <div class="cert">
+        <div class="cert-icon">[ ◉ ]</div>
+        <div class="cert-org">Oracle</div>
+        <div class="cert-name">Score Report</div>
+        <div class="cert-sub">Technical Assessment</div>
+      </div>
+      <div class="cert" style="border:1px dashed var(--border);background:transparent;opacity:.4;justify-content:center;align-items:center;display:flex;min-height:120px">
+        <div style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);text-align:center">+ more coming<br>soon</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head fu">
+      <span class="sec-num">06 / CONTACT</span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="fu">
+        <div class="cl">
+          <h3>Let's<br>Build<br>Together.</h3>
+          <p>Ready to collaborate on a data project or just want to say hi? Always open to interesting conversations, research opportunities, and exciting builds.</p>
+        </div>
+        <div class="clinks">
+          <a href="mailto:shiva220620@gmail.com" class="ci">shiva220620@gmail.com<span class="ci-lbl">→ email</span></a>
+          <a href="https://www.linkedin.com/in/shiva-kumar-yadav-201661337" class="ci" target="_blank">linkedin.com/in/shiva-kumar-yadav<span class="ci-lbl">→ linkedin</span></a>
+          <a href="https://github.com/sky-shiva" class="ci" target="_blank">github.com/sky-shiva<span class="ci-lbl">→ github</span></a>
+          <a href="https://www.fiverr.com/users/shivakumar_7781" class="ci" target="_blank">fiverr.com/shivakumar_7781<span class="ci-lbl">→ fiverr</span></a>
+        </div>
+        <div style="margin-top:1.5rem;font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted);line-height:2">
+          <div>response_time: 24–48 hours</div>
+          <div>location: Hyderabad, IN</div>
+          <div>timezone: IST (UTC+5:30)</div>
+        </div>
+      </div>
+      <div class="fu" style="transition-delay:.2s">
+        <form class="cform" action="/contact" method="POST">
+          <div class="frow">
+            <div class="fg"><label>name</label><input type="text" name="name" placeholder="your_name" required></div>
+            <div class="fg"><label>email</label><input type="email" name="email" placeholder="your@email.com" required></div>
+          </div>
+          <div class="fg"><label>subject</label><input type="text" name="subject" placeholder="project_collab / internship / hello"></div>
+          <div class="fg"><label>message</label><textarea name="message" placeholder="I have an exciting project idea..." required></textarea></div>
+          <button type="submit" class="btn-s" style="cursor:pointer;font-size:.72rem;text-align:center">send_message() →</button>
+          <div style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted)">// messages saved to database · no spam ever</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fw">
+    <div class="fl">© 2026 ~/shiva_ky — designed &amp; built by Shiva Kumar Yadav</div>
+    <div class="fr">
+      <a href="#hero">back_to_top()</a>
+      <a href="mailto:shiva220620@gmail.com">email</a>
+      <a href="https://github.com/sky-shiva" target="_blank">github</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleTheme(){
+  const html=document.documentElement,btn=document.getElementById('themeBtn');
+  if(html.getAttribute('data-theme')==='dark'){
+    html.setAttribute('data-theme','light');btn.textContent='[ dark ]';
+  } else {
+    html.setAttribute('data-theme','dark');btn.textContent='[ light ]';
+  }
+}
+window.addEventListener('scroll',()=>{
+  const p=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;
+  document.getElementById('prog').style.width=p+'%';
+  document.getElementById('bk').classList.toggle('show',window.scrollY>400);
+});
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.1});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+const roles=['Data_science_enthusiast()','ml_engineer.learning()','Computer_vision.explorer()','building_something.withAI()'];
+let ri=0,ci=0,del=false;
+const td=document.getElementById('typed');
+function t(){
+  const c=roles[ri];
+  if(!del){ci++;if(ci>c.length){del=true;setTimeout(t,1800);return;}}
+  else{ci--;if(ci===0){del=false;ri=(ri+1)%roles.length;setTimeout(t,400);return;}}
+  td.textContent=c.slice(0,ci);setTimeout(t,del?35:70);
+}
+t();
+</script>
+</body>
+</html>
